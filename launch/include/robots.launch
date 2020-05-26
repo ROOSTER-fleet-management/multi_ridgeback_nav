@@ -1,9 +1,12 @@
 <launch>
   
-<!--  ..............................  BEGIN ROBOT1  .....................................  -->
+<!--  ..............................  ROBOT1  .....................................  -->
   <arg name="r1_initX" value="7.2" />
   <arg name="r1_initY" value="-2.2" />
   <arg name="r1_initYaw" value="0" />
+  <arg name="r1_scanTopic" value="front/scan" />
+  <arg name="r1_baseFrame" value="base_link" />
+  <arg name="r1_odomFrame" value="odom" />
 
   <group ns="r1">
     <include file="$(find multi_ridgeback_nav)/launch/include/ridgeback.launch">
@@ -13,21 +16,26 @@
       <arg name="initY" value="$(arg r1_initY)" />
       <arg name="initYaw" value="$(arg r1_initYaw)" />
     </include>
+    <include file="$(find multi_ridgeback_nav)/launch/include/amcl_robot1.launch" >
+      <arg name="scan_topic" value="$(arg r1_scanTopic)" />
+      <arg name="initial_pose_x" value="$(arg r1_initX)" />
+      <arg name="initial_pose_y" value="$(arg r1_initY)" />
+      <arg name="initial_pose_a" value="$(arg r1_initYaw)" />
+    </include>
+    <include file="$(find multi_ridgeback_nav)/launch/include/move_base_1.launch" >
+      <arg name="odom_frame_id"   value="$(arg r1_odomFrame)"/>
+      <arg name="base_frame_id"   value="$(arg r1_baseFrame)"/>
+      <arg name="laser_topic" value="$(arg r1_scanTopic)" />
+    </include>
   </group>
   
-  <!-- Launch amcl and move_base for ROBOT1 -->
-  <include file="$(find multi_ridgeback_nav)/launch/include/amcl_robot1.launch" />
-  <include file="$(find multi_ridgeback_nav)/launch/include/move_base_1.launch" />
-
-  <!-- set the initial pose for ROBOT1 in the amcl parameters -->
-  <rosparam param="r1_amcl/initial_pose_x" subst_value="True">$(arg r1_initX)</rosparam>
-  <rosparam param="r1_amcl/initial_pose_y" subst_value="True">$(arg r1_initY)</rosparam>
-  <rosparam param="r1_amcl/initial_pose_a" subst_value="True">$(arg r1_initYaw)</rosparam>
-
-<!--  ..............................  BEGIN ROBOT2  ......................................  -->
+<!--  ..............................  ROBOT2  ......................................  -->
   <arg name="r2_initX" value="6.7" />
   <arg name="r2_initY" value="7.6" />
   <arg name="r2_initYaw" value="1.6" />
+  <arg name="r2_scanTopic" value="front/scan" />
+  <arg name="r2_baseFrame" value="base_link" />
+  <arg name="r2_odomFrame" value="odom" />
 
   <group ns="r2">
     <include file="$(find multi_ridgeback_nav)/launch/include/ridgeback.launch">
@@ -37,21 +45,26 @@
       <arg name="initY" value="$(arg r2_initY)" />
       <arg name="initYaw" value="$(arg r2_initYaw)" />
     </include>
+    <include file="$(find multi_ridgeback_nav)/launch/include/amcl_robot1.launch" >
+      <arg name="scan_topic" value="$(arg r2_scanTopic)" />
+      <arg name="initial_pose_x" value="$(arg r2_initX)" />
+      <arg name="initial_pose_y" value="$(arg r2_initY)" />
+      <arg name="initial_pose_a" value="$(arg r2_initYaw)" />
+    </include>
+    <include file="$(find multi_ridgeback_nav)/launch/include/move_base_1.launch" >
+      <arg name="odom_frame_id"   value="$(arg r2_odomFrame)"/>
+      <arg name="base_frame_id"   value="$(arg r2_baseFrame)"/>
+      <arg name="laser_topic" value="$(arg r2_scanTopic)" />
+    </include>
   </group>
 
-  <!-- Launch amcl and move_base for ROBOT2 -->
-  <include file="$(find multi_ridgeback_nav)/launch/include/amcl_robot2.launch" />
-  <include file="$(find multi_ridgeback_nav)/launch/include/move_base_2.launch" />
-
-  <!-- set the initial pose for ROBOT2 in the amcl parameters -->
-  <rosparam param="r2_amcl/initial_pose_x" subst_value="True">$(arg r2_initX)</rosparam>
-  <rosparam param="r2_amcl/initial_pose_y" subst_value="True">$(arg r2_initY)</rosparam>
-  <rosparam param="r2_amcl/initial_pose_a" subst_value="True">$(arg r2_initYaw)</rosparam>
-
-  <!-- ..............................  BEGIN ROBOT3  ..................................... -->
+  <!-- ..............................  ROBOT3  ..................................... -->
   <arg name="r3_initX" value="-8.5" />
   <arg name="r3_initY" value="-3.8" />
   <arg name="r3_initYaw" value="0.8" />
+  <arg name="r3_scanTopic" value="front/scan" />
+  <arg name="r3_baseFrame" value="base_link" />
+  <arg name="r3_odomFrame" value="odom" />
 
   <group ns="r3">
     <include file="$(find multi_ridgeback_nav)/launch/include/ridgeback.launch">
@@ -61,16 +74,17 @@
       <arg name="initY" value="$(arg r3_initY)" />
       <arg name="initYaw" value="$(arg r3_initYaw)" />
     </include>
+    <include file="$(find multi_ridgeback_nav)/launch/include/amcl_robot1.launch" >
+      <arg name="scan_topic" value="$(arg r3_scanTopic)" />
+      <arg name="initial_pose_x" value="$(arg r3_initX)" />
+      <arg name="initial_pose_y" value="$(arg r3_initY)" />
+      <arg name="initial_pose_a" value="$(arg r3_initYaw)" />
+    </include>
+    <include file="$(find multi_ridgeback_nav)/launch/include/move_base_1.launch" >
+      <arg name="odom_frame_id"   value="$(arg r3_odomFrame)"/>
+      <arg name="base_frame_id"   value="$(arg r3_baseFrame)"/>
+      <arg name="laser_topic" value="$(arg r3_scanTopic)" />
+    </include>
   </group>
-
-  <!-- Launch amcl and move_base for ROBOT3 -->
-  <include file="$(find multi_ridgeback_nav)/launch/include/amcl_robot3.launch" />
-  <include file="$(find multi_ridgeback_nav)/launch/include/move_base_3.launch" />
-
-  <!-- set the initial pose for ROBOT3 in the amcl parameters -->
-  <rosparam param="r3_amcl/initial_pose_x" subst_value="True">$(arg r3_initX)</rosparam>
-  <rosparam param="r3_amcl/initial_pose_y" subst_value="True">$(arg r3_initY)</rosparam>
-  <rosparam param="r3_amcl/initial_pose_a" subst_value="True">$(arg r3_initYaw)</rosparam>
-
 
 </launch>

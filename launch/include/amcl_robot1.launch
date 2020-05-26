@@ -1,15 +1,15 @@
 <launch>
 
   <arg name="use_map_topic"   default="false"/>
-  <arg name="scan_topic"      default="/r1/front/scan"/>
+  <arg name="scan_topic"      default="front/scan"/>
   <arg name="initial_pose_x"  default="0.0"/>
   <arg name="initial_pose_y"  default="0.0"/>
   <arg name="initial_pose_a"  default="0.0"/>
-  <arg name="odom_frame_id"   default="/r1_tf/odom"/>
-  <arg name="base_frame_id"   default="/r1_tf/base_link"/>
+  <arg name="odom_frame_id"   default="odom"/>
+  <arg name="base_frame_id"   default="base_link"/>
   <arg name="global_frame_id" default="map"/>
 
-  <node pkg="amcl" type="amcl" name="r1_amcl">
+  <node pkg="amcl" type="amcl" name="amcl">
     <param name="use_map_topic"             value="$(arg use_map_topic)"/>
     <!-- Publish scans from best pose at a max of 10 Hz -->
     <param name="odom_model_type" value="omni-corrected"/>
@@ -62,9 +62,9 @@
     <param name="first_map_only" value="false"/>
 
     <remap from="scan"                      to="$(arg scan_topic)"/>
-    <remap from="initialpose"               to="/r1/initialpose"/>
+    <!-- <remap from="initialpose"               to="/r1/initialpose"/>
     <remap from="amcl_pose"                 to="/r1/amcl_pose"/>
-    <remap from="particlecloud"             to="/r1/particlecloud"/>
+    <remap from="particlecloud"             to="/r1/particlecloud"/> -->
 
   </node>
 
