@@ -1,6 +1,9 @@
 <launch>
   
 <!--  ..............................  ROBOT1  .....................................  -->
+  <arg name="r1_namespace" value="r1" />
+  <arg name="r1_tfpre" value="$(arg r1_namespace)_tf" />
+  <arg name="r1_robot_name"  value="ridgeback1" />
   <arg name="r1_initX" value="7.2" />
   <arg name="r1_initY" value="-2.2" />
   <arg name="r1_initYaw" value="0" />
@@ -8,21 +11,24 @@
   <arg name="r1_baseFrame" value="base_link" />
   <arg name="r1_odomFrame" value="odom" />
 
-  <group ns="r1">
+  <group ns="$(arg r1_namespace)">
     <include file="$(find multi_ridgeback_nav)/launch/include/ridgeback.launch">
-      <arg name="namespace" value="r1" />
-      <arg name="robot_name"  value="ridgeback1" />
+      <arg name="namespace" value="$(arg r1_namespace)" />
+      <arg name="tfpre" value="$(arg r1_tfpre)" />
+      <arg name="robot_name"  value="$(arg r1_robot_name)" />
       <arg name="initX" value="$(arg r1_initX)" />
       <arg name="initY" value="$(arg r1_initY)" />
       <arg name="initYaw" value="$(arg r1_initYaw)" />
     </include>
-    <include file="$(find multi_ridgeback_nav)/launch/include/amcl_robot1.launch" >
+    <include file="$(find multi_ridgeback_nav)/launch/include/amcl_rdg.launch" >
+      <arg name="namespace" value="$(arg r1_namespace)" />
+      <arg name="tfpre" value="$(arg r1_tfpre)" />
       <arg name="scan_topic" value="$(arg r1_scanTopic)" />
       <arg name="initial_pose_x" value="$(arg r1_initX)" />
       <arg name="initial_pose_y" value="$(arg r1_initY)" />
       <arg name="initial_pose_a" value="$(arg r1_initYaw)" />
     </include>
-    <include file="$(find multi_ridgeback_nav)/launch/include/move_base_1.launch" >
+    <include file="$(find multi_ridgeback_nav)/launch/include/move_base_rdg.launch" >
       <arg name="odom_frame_id"   value="$(arg r1_odomFrame)"/>
       <arg name="base_frame_id"   value="$(arg r1_baseFrame)"/>
       <arg name="laser_topic" value="$(arg r1_scanTopic)" />
@@ -30,6 +36,9 @@
   </group>
   
 <!--  ..............................  ROBOT2  ......................................  -->
+  <arg name="r2_namespace" value="r2" />
+  <arg name="r2_tfpre" value="$(arg r2_namespace)_tf" />
+  <arg name="r2_robot_name"  value="ridgeback2" />
   <arg name="r2_initX" value="6.7" />
   <arg name="r2_initY" value="7.6" />
   <arg name="r2_initYaw" value="1.6" />
@@ -37,21 +46,24 @@
   <arg name="r2_baseFrame" value="base_link" />
   <arg name="r2_odomFrame" value="odom" />
 
-  <group ns="r2">
+  <group ns="$(arg r2_namespace)">
     <include file="$(find multi_ridgeback_nav)/launch/include/ridgeback.launch">
-      <arg name="namespace" value="r2" />
-      <arg name="robot_name"  value="ridgeback2" />
+      <arg name="namespace" value="$(arg r2_namespace)" />
+      <arg name="tfpre" value="$(arg r2_tfpre)" />
+      <arg name="robot_name"  value="$(arg r2_robot_name)" />
       <arg name="initX" value="$(arg r2_initX)" />
       <arg name="initY" value="$(arg r2_initY)" />
       <arg name="initYaw" value="$(arg r2_initYaw)" />
     </include>
-    <include file="$(find multi_ridgeback_nav)/launch/include/amcl_robot1.launch" >
+    <include file="$(find multi_ridgeback_nav)/launch/include/amcl_rdg.launch" >
+      <arg name="namespace" value="$(arg r2_namespace)" />
+      <arg name="tfpre" value="$(arg r2_tfpre)" />
       <arg name="scan_topic" value="$(arg r2_scanTopic)" />
       <arg name="initial_pose_x" value="$(arg r2_initX)" />
       <arg name="initial_pose_y" value="$(arg r2_initY)" />
       <arg name="initial_pose_a" value="$(arg r2_initYaw)" />
     </include>
-    <include file="$(find multi_ridgeback_nav)/launch/include/move_base_1.launch" >
+    <include file="$(find multi_ridgeback_nav)/launch/include/move_base_rdg.launch" >
       <arg name="odom_frame_id"   value="$(arg r2_odomFrame)"/>
       <arg name="base_frame_id"   value="$(arg r2_baseFrame)"/>
       <arg name="laser_topic" value="$(arg r2_scanTopic)" />
@@ -59,6 +71,9 @@
   </group>
 
   <!-- ..............................  ROBOT3  ..................................... -->
+  <arg name="r3_namespace" value="r3" />
+  <arg name="r3_tfpre" value="$(arg r3_namespace)_tf" />
+  <arg name="r3_robot_name"  value="ridgeback3" />
   <arg name="r3_initX" value="-8.5" />
   <arg name="r3_initY" value="-3.8" />
   <arg name="r3_initYaw" value="0.8" />
@@ -68,19 +83,22 @@
 
   <group ns="r3">
     <include file="$(find multi_ridgeback_nav)/launch/include/ridgeback.launch">
-      <arg name="namespace" value="r3" />
-      <arg name="robot_name"  value="ridgeback3" />
+      <arg name="namespace" value="$(arg r3_namespace)" />
+      <arg name="tfpre" value="$(arg r3_tfpre)" />
+      <arg name="robot_name"  value="$(arg r3_robot_name)" />
       <arg name="initX" value="$(arg r3_initX)" />
       <arg name="initY" value="$(arg r3_initY)" />
       <arg name="initYaw" value="$(arg r3_initYaw)" />
     </include>
-    <include file="$(find multi_ridgeback_nav)/launch/include/amcl_robot1.launch" >
+    <include file="$(find multi_ridgeback_nav)/launch/include/amcl_rdg.launch" >
+      <arg name="namespace" value="$(arg r3_namespace)" />
+      <arg name="tfpre" value="$(arg r3_tfpre)" />
       <arg name="scan_topic" value="$(arg r3_scanTopic)" />
       <arg name="initial_pose_x" value="$(arg r3_initX)" />
       <arg name="initial_pose_y" value="$(arg r3_initY)" />
       <arg name="initial_pose_a" value="$(arg r3_initYaw)" />
     </include>
-    <include file="$(find multi_ridgeback_nav)/launch/include/move_base_1.launch" >
+    <include file="$(find multi_ridgeback_nav)/launch/include/move_base_rdg.launch" >
       <arg name="odom_frame_id"   value="$(arg r3_odomFrame)"/>
       <arg name="base_frame_id"   value="$(arg r3_baseFrame)"/>
       <arg name="laser_topic" value="$(arg r3_scanTopic)" />
