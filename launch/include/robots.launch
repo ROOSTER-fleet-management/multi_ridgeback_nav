@@ -12,7 +12,7 @@
   <arg name="r1_odomFrame" value="odom" />
 
   <group ns="$(arg r1_namespace)">
-    <include file="$(find multi_ridgeback_nav)/launch/include/ridgeback.launch">
+    <include file="$(find multi_ridgeback_gazebo)/launch/include/ridgeback.launch">
       <arg name="namespace" value="$(arg r1_namespace)" />
       <arg name="tfpre" value="$(arg r1_tfpre)" />
       <arg name="robot_name"  value="$(arg r1_robot_name)" />
@@ -47,7 +47,7 @@
   <arg name="r2_odomFrame" value="odom" />
 
   <group ns="$(arg r2_namespace)">
-    <include file="$(find multi_ridgeback_nav)/launch/include/ridgeback.launch">
+    <include file="$(find multi_ridgeback_gazebo)/launch/include/ridgeback.launch">
       <arg name="namespace" value="$(arg r2_namespace)" />
       <arg name="tfpre" value="$(arg r2_tfpre)" />
       <arg name="robot_name"  value="$(arg r2_robot_name)" />
@@ -82,7 +82,7 @@
   <arg name="r3_odomFrame" value="odom" />
 
   <group ns="r3">
-    <include file="$(find multi_ridgeback_nav)/launch/include/ridgeback.launch">
+    <include file="$(find multi_ridgeback_gazebo)/launch/include/ridgeback.launch">
       <arg name="namespace" value="$(arg r3_namespace)" />
       <arg name="tfpre" value="$(arg r3_tfpre)" />
       <arg name="robot_name"  value="$(arg r3_robot_name)" />
