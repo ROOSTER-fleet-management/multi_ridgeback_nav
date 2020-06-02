@@ -5,12 +5,12 @@ This package requires installing the ridgeback simulation and navigation pacakge
 
 The terminal commands for installing the above mentioned packages: 
 ```console
-sudo apt-get install ros-kinetic-ridgeback-simulator ros-kinetic-ridgeback-desktop
-sudo apt-get install ros-kinetic-ridgeback-navigation
+sudo apt-get install ros-melodic-ridgeback-simulator ros-melodic-ridgeback-desktop
+sudo apt-get install ros-melodic-ridgeback-navigation
 ```
 Also for teleoperation of the robots from terminal, install the teleop_twist_keyboard package using the following command:
 ```console
-sudo apt-get install ros-kinetic-teleop-twist-keyboard
+sudo apt-get install ros-melodic-teleop-twist-keyboard
 ```
 Also note that this package requires multi_ridgeback_gazebo package to be installed. This package can be found here https://git.tu-delft.ne-kloud.de/neel.nagda/multi_ridgeback_gazebo.git (If you cannot access it, let me know:- n.n.nagda@tudelft.nl )
 
