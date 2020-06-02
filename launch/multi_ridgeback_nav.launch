@@ -15,25 +15,6 @@
     <arg name="paused" value="false"/>
   </include>
   
-  <rosparam param="gazebo_ros_control/pid_gains">
-    front_left_wheel:
-      p: 1
-      i: 0.1
-      d: 0
-    front_right_wheel:
-      p: 1
-      i: 0.1
-      d: 0
-    rear_left_wheel:
-      p: 1
-      i: 0.1
-      d: 0
-    rear_right_wheel:
-      p: 1
-      i: 0.1
-      d: 0
-  </rosparam>
-
 <!-- Run the map server -->
  <arg name="map_file" default="$(find multi_ridgeback_nav)/maps/my_ridgeback_race.yaml"/>
  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" >
