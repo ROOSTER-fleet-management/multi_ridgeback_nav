@@ -1,7 +1,7 @@
 <launch>
   
 <!--  ..............................  ROBOT1  .....................................  -->
-  <arg name="r1_namespace" value="r1" />
+  <arg name="r1_namespace" value="rdg01" />
   <arg name="r1_tfpre" value="$(arg r1_namespace)_tf" />
   <arg name="r1_robot_name"  value="ridgeback1" />
   <arg name="r1_initX" value="7.2" />
@@ -36,7 +36,7 @@
   </group>
   
 <!--  ..............................  ROBOT2  ......................................  -->
-  <arg name="r2_namespace" value="r2" />
+  <arg name="r2_namespace" value="rdg02" />
   <arg name="r2_tfpre" value="$(arg r2_namespace)_tf" />
   <arg name="r2_robot_name"  value="ridgeback2" />
   <arg name="r2_initX" value="6.7" />
@@ -71,7 +71,7 @@
   </group>
 
   <!-- ..............................  ROBOT3  ..................................... -->
-  <arg name="r3_namespace" value="r3" />
+  <arg name="r3_namespace" value="rdg03" />
   <arg name="r3_tfpre" value="$(arg r3_namespace)_tf" />
   <arg name="r3_robot_name"  value="ridgeback3" />
   <arg name="r3_initX" value="-8.5" />
