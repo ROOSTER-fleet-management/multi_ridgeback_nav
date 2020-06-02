@@ -1,5 +1,6 @@
 <launch>
-
+  <arg name="namespace"       default="rdg00" />
+  <arg name="tfpre"           default="$(arg namespace)_tf"/>
   <arg name="odom_frame_id"   default="odom"/>
   <arg name="base_frame_id"   default="base_link"/>
   <arg name="global_frame_id" default="/map"/>

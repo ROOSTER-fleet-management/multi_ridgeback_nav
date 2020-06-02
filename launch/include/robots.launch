@@ -29,6 +29,8 @@
       <arg name="initial_pose_a" value="$(arg r1_initYaw)" />
     </include>
     <include file="$(find multi_ridgeback_nav)/launch/include/move_base_rdg.launch" >
+      <arg name="namespace" value="$(arg r1_namespace)" />
+      <arg name="tfpre" value="$(arg r1_tfpre)" />
       <arg name="odom_frame_id"   value="$(arg r1_odomFrame)"/>
       <arg name="base_frame_id"   value="$(arg r1_baseFrame)"/>
       <arg name="laser_topic" value="$(arg r1_scanTopic)" />
@@ -64,6 +66,8 @@
       <arg name="initial_pose_a" value="$(arg r2_initYaw)" />
     </include>
     <include file="$(find multi_ridgeback_nav)/launch/include/move_base_rdg.launch" >
+      <arg name="namespace" value="$(arg r2_namespace)" />
+      <arg name="tfpre" value="$(arg r2_tfpre)" />
       <arg name="odom_frame_id"   value="$(arg r2_odomFrame)"/>
       <arg name="base_frame_id"   value="$(arg r2_baseFrame)"/>
       <arg name="laser_topic" value="$(arg r2_scanTopic)" />
@@ -81,7 +85,7 @@
   <arg name="r3_baseFrame" value="base_link" />
   <arg name="r3_odomFrame" value="odom" />
 
-  <group ns="r3">
+  <group ns="$(arg r3_namespace)">
     <include file="$(find multi_ridgeback_gazebo)/launch/include/ridgeback.launch">
       <arg name="namespace" value="$(arg r3_namespace)" />
       <arg name="tfpre" value="$(arg r3_tfpre)" />
@@ -99,6 +103,8 @@
       <arg name="initial_pose_a" value="$(arg r3_initYaw)" />
     </include>
     <include file="$(find multi_ridgeback_nav)/launch/include/move_base_rdg.launch" >
+      <arg name="namespace" value="$(arg r3_namespace)" />
+      <arg name="tfpre" value="$(arg r3_tfpre)" />
       <arg name="odom_frame_id"   value="$(arg r3_odomFrame)"/>
       <arg name="base_frame_id"   value="$(arg r3_baseFrame)"/>
       <arg name="laser_topic" value="$(arg r3_scanTopic)" />
