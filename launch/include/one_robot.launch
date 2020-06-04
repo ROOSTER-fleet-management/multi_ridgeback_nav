@@ -1,0 +1,41 @@
+<launch>
+  
+  <arg name="namespace" default="rdg01" />
+  <arg name="tfpre" default="$(arg namespace)_tf" />
+  <arg name="robot_name"  default="ridgeback_$(arg namespace)" />
+  <arg name="initX" default="7.2" />
+  <arg name="initY" default="-2.2" />
+  <arg name="initYaw" default="0" />
+  <arg name="scanTopic" default="front/scan" />
+  <arg name="baseFrame" default="$(arg tfpre)/base_link" />
+  <arg name="odomFrame" default="$(arg tfpre)/odom" />
+
+  <group ns="$(arg namespace)">
+    <include file="$(find multi_ridgeback_gazebo)/launch/include/ridgeback.launch">
+      <arg name="namespace" value="$(arg namespace)" />
+      <arg name="tfpre" value="$(arg tfpre)" />
+      <arg name="robot_name"  value="$(arg robot_name)" />
+      <arg name="initX" value="$(arg initX)" />
+      <arg name="initY" value="$(arg initY)" />
+      <arg name="initYaw" value="$(arg initYaw)" />
+    </include>
+    <include file="$(find multi_ridgeback_nav)/launch/include/amcl_rdg.launch" >
+      <arg name="namespace" value="$(arg namespace)" />
+      <arg name="tfpre" value="$(arg tfpre)" />
+      <arg name="scan_topic" value="$(arg scanTopic)" />
+      <arg name="odom_frame_id"   value="$(arg odomFrame)"/>
+      <arg name="base_frame_id"   value="$(arg baseFrame)"/>
+      <arg name="initial_pose_x" value="$(arg initX)" />
+      <arg name="initial_pose_y" value="$(arg initY)" />
+      <arg name="initial_pose_a" value="$(arg initYaw)" />
+    </include>
+    <include file="$(find multi_ridgeback_nav)/launch/include/move_base_rdg.launch" >
+      <arg name="namespace" value="$(arg namespace)" />
+      <arg name="tfpre" value="$(arg tfpre)" />
+      <arg name="odom_frame_id"   value="$(arg odomFrame)"/>
+      <arg name="base_frame_id"   value="$(arg baseFrame)"/>
+      <arg name="laser_topic" value="$(arg scanTopic)" />
+    </include>
+  </group>
+
+</launch>
