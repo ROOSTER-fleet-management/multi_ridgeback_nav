@@ -3,6 +3,7 @@
   <arg name="gui" default="true" />
   <arg name="headless" default="false" />
   <arg name="world_name" default="$(find ridgeback_gazebo)/worlds/ridgeback_race.world" />
+  <arg name="sfm_mpdm_enabled" default="True" doc="(True or False) Default true: Launches all robots with sfm-mpdm nodes instead of move_base. False: launches all robots with move_base instead of sfm-mpdm." />
   <!-- <arg name="world_name" default="$(find multi_ridgeback_gazebo)/worlds/willowgarage.world" /> -->
    
   <!-- Launch Gazebo with the specified world -->
@@ -24,7 +25,9 @@
 <!--******************************-->
 <!-- launching the robots along with their navigation related packages-->
 <!--******************************-->
-  <include file="$(find multi_ridgeback_nav)/launch/include/robots.launch" />
+  <include file="$(find multi_ridgeback_nav)/launch/include/robots.launch">
+    <arg name="sfm_mpdm_enabled" value="$(arg sfm_mpdm_enabled)" />
+  </include>
 
 <!--    Launching Rviz   -->
 <node name="rviz" pkg="rviz" type="rviz" args="-d $(find multi_ridgeback_nav)/rviz/amcl_demo.rviz" />
