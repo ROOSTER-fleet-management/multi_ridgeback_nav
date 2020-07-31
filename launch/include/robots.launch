@@ -8,7 +8,7 @@
 <!--  ..............................  ROBOT1  .....................................  -->
   <arg name="r1_namespace" value="rdg01" />
   <arg name="r1_tfpre" value="$(arg r1_namespace)_tf" />
-  <arg name="r1_robot_name"  value="ridgeback1" />
+  <arg name="r1_robot_name"  value="ridgeback_$(arg r1_namespace)" />
   <arg name="r1_initX" value="7.2" />
   <arg name="r1_initY" value="-2.2" />
   <arg name="r1_initYaw" value="0" />
@@ -51,7 +51,7 @@
 <!--  ..............................  ROBOT2  ......................................  -->
   <arg name="r2_namespace" value="rdg02" />
   <arg name="r2_tfpre" value="$(arg r2_namespace)_tf" />
-  <arg name="r2_robot_name"  value="ridgeback2" />
+  <arg name="r2_robot_name"  value="ridgeback_$(arg r2_namespace)" />
   <arg name="r2_initX" value="6.7" />
   <arg name="r2_initY" value="7.6" />
   <arg name="r2_initYaw" value="1.6" />
@@ -94,7 +94,7 @@
   <!-- ..............................  ROBOT3  ..................................... -->
   <arg name="r3_namespace" value="rdg03" />
   <arg name="r3_tfpre" value="$(arg r3_namespace)_tf" />
-  <arg name="r3_robot_name"  value="ridgeback3" />
+  <arg name="r3_robot_name"  value="ridgeback_$(arg r3_namespace)" />
   <arg name="r3_initX" value="-8.5" />
   <arg name="r3_initY" value="-3.8" />
   <arg name="r3_initYaw" value="0.8" />
