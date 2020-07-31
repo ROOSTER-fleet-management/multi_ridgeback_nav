@@ -44,6 +44,7 @@
     </include>
     <include file="$(find sfm_mpdm)/launch/sfm_mpdm_launch.launch" if="$(arg sfm_mpdm_enabled)">
       <arg name="robot_namespace" value="$(arg r1_namespace)" />
+      <arg name="scan_topic" value="$(arg r1_scanTopic)" />
     </include>
   </group>
   
@@ -86,6 +87,7 @@
     </include>
     <include file="$(find sfm_mpdm)/launch/sfm_mpdm_launch.launch" if="$(arg sfm_mpdm_enabled)">
       <arg name="robot_namespace" value="$(arg r2_namespace)" />
+      <arg name="scan_topic" value="$(arg r2_scanTopic)" />
     </include>
   </group>
 
@@ -128,6 +130,7 @@
     </include>
     <include file="$(find sfm_mpdm)/launch/sfm_mpdm_launch.launch" if="$(arg sfm_mpdm_enabled)">
       <arg name="robot_namespace" value="$(arg r3_namespace)" />
+      <arg name="scan_topic" value="$(arg r3_scanTopic)" />
     </include>
   </group>
 
