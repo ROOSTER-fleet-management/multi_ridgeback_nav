@@ -3,8 +3,9 @@
   <arg name="gui" default="true" />
   <arg name="headless" default="false" />
   <arg name="world_name" default="$(find ridgeback_gazebo)/worlds/ridgeback_race.world" />
-  <arg name="sfm_mpdm_enabled" default="True" doc="(True or False) Default true: Launches all robots with sfm-mpdm nodes instead of move_base. False: launches all robots with move_base instead of sfm-mpdm." />
   <!-- <arg name="world_name" default="$(find multi_ridgeback_gazebo)/worlds/willowgarage.world" /> -->
+  <arg name="sfm_mpdm_enabled" default="True" doc="(True or False) Default true: Launches all robots with sfm-mpdm nodes instead of move_base. False: launches all robots with move_base instead of sfm-mpdm." />
+  
    
   <!-- Launch Gazebo with the specified world -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
