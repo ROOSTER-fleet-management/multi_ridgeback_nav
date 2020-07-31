@@ -41,6 +41,7 @@
     </include>
     <include file="$(find sfm_mpdm)/launch/sfm_mpdm_launch.launch" if="$(arg sfm_mpdm_enabled)">
       <arg name="robot_namespace" value="$(arg namespace)" />
+      <arg name="scan_topic" value="$(arg scanTopic)" />
     </include>
   </group>
 
