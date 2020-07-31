@@ -2,7 +2,8 @@
   
   <!-- SFM-MPDM package arguments required for the sfm_mpdm_launch.launch file and the sfm_mpdm_base node for all robots -->
   <arg name="sfm_mpdm_enabled" default="True" doc="(True or False) Default true: Launches all robots with sfm-mpdm nodes instead of move_base. False: launches all robots with move_base instead of sfm-mpdm." />
-  <arg name="robotlist" value="['rdg01','rdg02','rdg03']" doc="A list of robot namespace IDs: [rdg01,rdg02,rdg03]." />
+  <arg name="robotlist" value="[rdg01,rdg02,rdg03]" doc="A list of robot namespace IDs: [rdg01,rdg02,rdg03]." />
+  <param name="/robot_list" value="$(arg robotlist)" />
 
 <!--  ..............................  ROBOT1  .....................................  -->
   <arg name="r1_namespace" value="rdg01" />
@@ -43,7 +44,6 @@
     </include>
     <include file="$(find sfm_mpdm)/launch/sfm_mpdm_launch.launch" if="$(arg sfm_mpdm_enabled)">
       <arg name="robot_namespace" value="$(arg r1_namespace)" />
-      <arg name="robotlist" value="$(arg robotlist)" />
     </include>
   </group>
   
@@ -86,7 +86,6 @@
     </include>
     <include file="$(find sfm_mpdm)/launch/sfm_mpdm_launch.launch" if="$(arg sfm_mpdm_enabled)">
       <arg name="robot_namespace" value="$(arg r2_namespace)" />
-      <arg name="robotlist" value="$(arg robotlist)" />
     </include>
   </group>
 
@@ -129,7 +128,6 @@
     </include>
     <include file="$(find sfm_mpdm)/launch/sfm_mpdm_launch.launch" if="$(arg sfm_mpdm_enabled)">
       <arg name="robot_namespace" value="$(arg r3_namespace)" />
-      <arg name="robotlist" value="$(arg robotlist)" />
     </include>
   </group>
 
