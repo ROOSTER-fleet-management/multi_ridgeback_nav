@@ -11,8 +11,10 @@
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
 
     <rosparam file="$(find ridgeback_navigation)/params/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam param="global_costmap/obstacles_layer/scan/sensor_frame" subst_value="True">$(arg tfpre)/front_laser</rosparam>
     <rosparam file="$(find ridgeback_navigation)/params/costmap_common_params.yaml" command="load" ns="local_costmap" />
-    
+    <rosparam param="local_costmap/obstacles_layer/scan/sensor_frame" subst_value="True">$(arg tfpre)/front_laser</rosparam>
+
     <rosparam file="$(find ridgeback_navigation)/params/map_nav_params/local_costmap_params.yaml" command="load" />
     <rosparam file="$(find ridgeback_navigation)/params/map_nav_params/global_costmap_params.yaml" command="load" />
     
@@ -21,6 +23,8 @@
     
     <param name="base_global_planner" type="string" value="navfn/NavfnROS" />
     <param name="base_local_planner" value="base_local_planner/TrajectoryPlannerROS"/>
+    <!-- <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS"/> -->
+    
     
     <!-- reset frame_id parameters using user input data -->
     <param name="global_costmap/global_frame" value="$(arg global_frame_id)"/>
