@@ -2,7 +2,8 @@
 
   <!-- SFM-MPDM package arguments required for the sfm_mpdm_launch.launch file and the sfm_mpdm_base node for all robots -->
   <arg name="sfm_mpdm_enabled" default="True" doc="(True or False) Default true: Launches all robots with sfm-mpdm nodes instead of move_base. False: launches all robots with move_base instead of sfm-mpdm." />
-  
+  <arg name="nav_package" default="move_base" />
+
   <arg name="namespace" default="rdg01" />
   <arg name="tfpre" default="$(arg namespace)_tf" />
   <arg name="robot_name"  default="ridgeback_$(arg namespace)" />
@@ -32,14 +33,14 @@
       <arg name="initial_pose_y" value="$(arg initY)" />
       <arg name="initial_pose_a" value="$(arg initYaw)" />
     </include>
-    <include file="$(find multi_ridgeback_nav)/launch/include/move_base_rdg.launch" unless="$(arg sfm_mpdm_enabled)">
+    <include file="$(find multi_ridgeback_nav)/launch/include/move_base_rdg.launch" if="$(eval nav_package == 'move_base')">
       <arg name="namespace" value="$(arg namespace)" />
       <arg name="tfpre" value="$(arg tfpre)" />
       <arg name="odom_frame_id"   value="$(arg odomFrame)"/>
       <arg name="base_frame_id"   value="$(arg baseFrame)"/>
       <arg name="laser_topic" value="$(arg scanTopic)" />
     </include>
-    <include file="$(find sfm_mpdm)/launch/sfm_mpdm_launch.launch" if="$(arg sfm_mpdm_enabled)">
+    <include file="$(find sfm_mpdm)/launch/sfm_mpdm_launch.launch" if="$(eval nav_package == 'sfm_mpdm')">
       <arg name="robot_namespace" value="$(arg namespace)" />
       <arg name="scan_topic" value="$(arg scanTopic)" />
     </include>
