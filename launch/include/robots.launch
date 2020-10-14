@@ -1,10 +1,8 @@
 <launch>
   
-  <!-- SFM-MPDM package arguments required for the sfm_mpdm_launch.launch file and the sfm_mpdm_base node for all robots -->
-  <arg name="sfm_mpdm_enabled" default="True" doc="(True or False) Default true: Launches all robots with sfm-mpdm nodes instead of move_base. False: launches all robots with move_base instead of sfm-mpdm." />
+  <!-- Creating a param storing the list of strings of robot ids required by sfm_mpdm_base node -->
   <arg name="robotlist" value="[rdg01,rdg02,rdg03]" doc="A list of robot namespace IDs: [rdg01,rdg02,rdg03]." />
   <param name="/robot_list" value="$(arg robotlist)" />
-  <arg name="nav_package" default="move_base" />
 
 <!--  ..............................  ROBOT1  .....................................  -->
   <arg name="r1_namespace" value="rdg01" />
@@ -16,6 +14,7 @@
   <arg name="r1_scanTopic" value="front/scan" />
   <arg name="r1_baseFrame" value="$(arg r1_tfpre)/base_link" />
   <arg name="r1_odomFrame" value="$(arg r1_tfpre)/odom" />
+  <arg name="r1_nav_package" value="move_base" />
 
   <group ns="$(arg r1_namespace)">
     <include file="$(find multi_ridgeback_gazebo)/launch/include/ridgeback.launch">
@@ -36,14 +35,14 @@
       <arg name="initial_pose_y" value="$(arg r1_initY)" />
       <arg name="initial_pose_a" value="$(arg r1_initYaw)" />
     </include>
-    <include file="$(find multi_ridgeback_nav)/launch/include/move_base_rdg.launch" if="$(eval nav_package == 'move_base')">
+    <include file="$(find multi_ridgeback_nav)/launch/include/move_base_rdg.launch" if="$(eval r1_nav_package == 'move_base')">
       <arg name="namespace" value="$(arg r1_namespace)" />
       <arg name="tfpre" value="$(arg r1_tfpre)" />
       <arg name="odom_frame_id"   value="$(arg r1_odomFrame)"/>
       <arg name="base_frame_id"   value="$(arg r1_baseFrame)"/>
       <arg name="laser_topic" value="$(arg r1_scanTopic)" />
     </include>
-    <include file="$(find sfm_mpdm)/launch/sfm_mpdm_launch.launch" if="$(eval nav_package == 'sfm_mpdm')">
+    <include file="$(find sfm_mpdm)/launch/sfm_mpdm_launch.launch" if="$(eval r1_nav_package == 'sfm_mpdm')">
       <arg name="robot_namespace" value="$(arg r1_namespace)" />
       <arg name="scan_topic" value="$(arg r1_scanTopic)" />
     </include>
@@ -59,6 +58,7 @@
   <arg name="r2_scanTopic" value="front/scan" />
   <arg name="r2_baseFrame" value="$(arg r2_tfpre)/base_link" />
   <arg name="r2_odomFrame" value="$(arg r2_tfpre)/odom" />
+  <arg name="r2_nav_package" value="move_base" />
 
   <group ns="$(arg r2_namespace)">
     <include file="$(find multi_ridgeback_gazebo)/launch/include/ridgeback.launch">
@@ -79,14 +79,14 @@
       <arg name="initial_pose_y" value="$(arg r2_initY)" />
       <arg name="initial_pose_a" value="$(arg r2_initYaw)" />
     </include>
-    <include file="$(find multi_ridgeback_nav)/launch/include/move_base_rdg.launch" if="$(eval nav_package == 'move_base')">
+    <include file="$(find multi_ridgeback_nav)/launch/include/move_base_rdg.launch" if="$(eval r2_nav_package == 'move_base')">
       <arg name="namespace" value="$(arg r2_namespace)" />
       <arg name="tfpre" value="$(arg r2_tfpre)" />
       <arg name="odom_frame_id"   value="$(arg r2_odomFrame)"/>
       <arg name="base_frame_id"   value="$(arg r2_baseFrame)"/>
       <arg name="laser_topic" value="$(arg r2_scanTopic)" />
     </include>
-    <include file="$(find sfm_mpdm)/launch/sfm_mpdm_launch.launch" if="$(eval nav_package == 'sfm_mpdm')">
+    <include file="$(find sfm_mpdm)/launch/sfm_mpdm_launch.launch" if="$(eval r2_nav_package == 'sfm_mpdm')">
       <arg name="robot_namespace" value="$(arg r2_namespace)" />
       <arg name="scan_topic" value="$(arg r2_scanTopic)" />
     </include>
@@ -102,6 +102,7 @@
   <arg name="r3_scanTopic" value="front/scan" />
   <arg name="r3_baseFrame" value="$(arg r3_tfpre)/base_link" />
   <arg name="r3_odomFrame" value="$(arg r3_tfpre)/odom" />
+  <arg name="r3_nav_package" value="move_base" />
 
   <group ns="$(arg r3_namespace)">
     <include file="$(find multi_ridgeback_gazebo)/launch/include/ridgeback.launch">
@@ -122,14 +123,14 @@
       <arg name="initial_pose_y" value="$(arg r3_initY)" />
       <arg name="initial_pose_a" value="$(arg r3_initYaw)" />
     </include>
-    <include file="$(find multi_ridgeback_nav)/launch/include/move_base_rdg.launch" if="$(eval nav_package == 'move_base')">
+    <include file="$(find multi_ridgeback_nav)/launch/include/move_base_rdg.launch" if="$(eval r3_nav_package == 'move_base')">
       <arg name="namespace" value="$(arg r3_namespace)" />
       <arg name="tfpre" value="$(arg r3_tfpre)" />
       <arg name="odom_frame_id"   value="$(arg r3_odomFrame)"/>
       <arg name="base_frame_id"   value="$(arg r3_baseFrame)"/>
       <arg name="laser_topic" value="$(arg r3_scanTopic)" />
     </include>
-    <include file="$(find sfm_mpdm)/launch/sfm_mpdm_launch.launch" if="$(eval nav_package == 'sfm_mpdm')">
+    <include file="$(find sfm_mpdm)/launch/sfm_mpdm_launch.launch" if="$(eval r3_nav_package == 'sfm_mpdm')">
       <arg name="robot_namespace" value="$(arg r3_namespace)" />
       <arg name="scan_topic" value="$(arg r3_scanTopic)" />
     </include>
